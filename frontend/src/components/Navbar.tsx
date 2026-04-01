@@ -1,5 +1,5 @@
 import React from 'react';
-import { LogOut, Bell, Search, User as UserIcon, Menu } from 'lucide-react';
+import { LogOut, Bell, Search, Menu } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { motion } from 'framer-motion';
 

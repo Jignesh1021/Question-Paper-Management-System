@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import { 
   FileText, 
-  Download, 
   Loader, 
   BookOpenCheck, 
   Search, 
@@ -11,7 +10,7 @@ import {
   Target,
   Play
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
 const StudentDashboard = () => {

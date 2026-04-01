@@ -4,13 +4,12 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import { 
   ShieldAlert, 
-  Clock, 
   Loader, 
   Target,
   CheckCircle,
   AlertTriangle
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const AssessmentTerminal = () => {
   const { id } = useParams();
@@ -21,7 +20,6 @@ const AssessmentTerminal = () => {
   const [submitting, setSubmitting] = useState(false);
   const [exam, setExam] = useState<any>(null);
   const [paper, setPaper] = useState<any>(null);
-  const [submission, setSubmission] = useState<any>(null);
   
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
@@ -36,7 +34,6 @@ const AssessmentTerminal = () => {
         
         setExam(data.exam);
         setPaper(data.paper);
-        setSubmission(data.submission);
         
         // Initialize timer based on server's startedAt + duration
         const startTime = new Date(data.submission.startedAt).getTime();
