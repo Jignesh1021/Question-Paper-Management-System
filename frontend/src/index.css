@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=JetBrains+Mono:wght@100..800&family=Outfit:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-500: #6366f1;
+  --brand-600: #4f46e5;
+  --slate-950: #020617;
+  --zinc-950: #09090b;
+  --zinc-900: #18181b;
+  --zinc-800: #27272a;
+  --zinc-100: #f4f4f5;
+  --zinc-400: #a1a1aa;
+  --whisper-border: rgba(255, 255, 255, 0.08);
+}
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-zinc-100 antialiased selection:bg-brand-500/20 selection:text-brand-300;
+    font-family: 'Geist', sans-serif;
+  }
+}
+
+@layer components {
+  /* Premium Components - Stitch Reinforced */
+  .pro-card {
+    @apply bg-zinc-950/40 backdrop-blur-3xl border border-whisper-border rounded-[2.5rem] p-10 
+           hover:border-brand-500/30 transition-all duration-700 shadow-2xl shadow-black/40;
+  }
+
+  .btn-pro-primary {
+    @apply bg-brand-600 text-white rounded-2xl px-10 py-5 font-black uppercase tracking-widest 
+           flex items-center justify-center gap-3 hover:bg-brand-500 hover:shadow-2xl 
+           hover:shadow-brand-600/30 active:scale-95 transition-all duration-500 font-display;
+  }
+
+  .btn-pro-secondary {
+    @apply bg-white/5 backdrop-blur-xl border border-whisper-border text-white rounded-2xl 
+           px-10 py-5 font-black uppercase tracking-widest flex items-center justify-center 
+           gap-3 hover:bg-white/10 hover:border-brand-500/20 active:scale-95 transition-all duration-500;
+  }
+
+  .input-pro {
+    @apply w-full bg-zinc-950/50 border border-whisper-border rounded-2xl px-8 py-5 text-white 
+           placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-brand-500/50 
+           focus:border-brand-500 transition-all duration-500 font-medium;
+  }
+
+  .pro-table-container {
+    @apply bg-zinc-950/40 backdrop-blur-3xl border border-whisper-border rounded-[2.5rem] overflow-hidden;
+  }
+
+  .pro-table {
+    @apply w-full border-collapse text-left;
+  }
+
+  .pro-table th {
+    @apply px-8 py-6 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500 border-b border-whisper-border font-mono;
+  }
+
+  .pro-table td {
+    @apply px-8 py-6 border-b border-whisper-border/50 text-zinc-300;
+  }
+
+  /* Utility - Cyber Grid */
+  .cyber-grid {
+    background-image: 
+      linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Micro-Motion */
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .stagger-reveal > * {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes reveal {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-white/5 rounded-full hover:bg-brand-500/50 transition-colors;
+  }
+
+  /* NoPrint utility */
+  @media print {
+    .no-print { display: none !important; }
+  }
+}
+
+/* Custom Typography Helpers */
+.font-display { font-family: 'Outfit', sans-serif; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+.font-body { font-family: 'Geist', sans-serif; }
+
+/* Responsive Clamps */
+.text-hero { font-size: clamp(3rem, 10vw, 6rem); @apply font-black leading-none tracking-tighter; }
+.gap-section { padding-top: clamp(3rem, 10vw, 8rem); padding-bottom: clamp(3rem, 10vw, 8rem); }
